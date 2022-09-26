@@ -11,7 +11,7 @@ def index(request):
     return render(request, 'profile_analyzer/homepage.html')
 
 
-def my_view(request):
+def search_page(request):
 
     search_value = request.GET.get('q')
     page = request.GET.get('page')
