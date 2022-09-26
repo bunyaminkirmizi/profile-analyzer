@@ -2,9 +2,10 @@
 search profiles on github and save them in a list django based web app.
 
 # build & run
-In order to run this application you have to fullfill these requirements:
-You have to have a postgres database(you can get a docker container for this one):
-Markdown | Less 
+In order to run this application you have to fulfill these requirements:
+1. You have to have a postgres database which has these configurations(you can get a docker container for this one):
+
+Field | Value 
 --- | --- 
 DATABASE_NAME | postgres
 USER| postgres
@@ -12,7 +13,7 @@ PASSWORD| postgrespw
 HOST| localhost
 PORT| 49153
 
-And a python interpreter whis has Django version 4.1.1 and then run these commands.
+2. And a python interpreter which has Django version 4.1.1 and then run these commands.
 
 ```bash
 python.exe .\manage.py makemigrations
