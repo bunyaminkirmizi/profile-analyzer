@@ -1,0 +1,46 @@
+{% extends "profile_analyzer/base.html" %}
+{% block title %}Search{% endblock %}
+{% block content %}
+
+<p class="fw-bold">{{searchresult.total_count}} results found</p>
+<table style="width: 90%;" class="table relative text-center table-bordered">
+	<thead>
+		<tr>
+			<th scope="col">Avatar</th>
+			<th scope="col">Username(Name)</th>
+			<th scope="col">Bio</th>
+			<th scope="col">Location</th>
+			<th scope="col">Add</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{% for user in searchresult.items %}
+		<tr>
+			<th scope="row"><img src={{user.avatar_url}} width="60px" height="60px" class="rounded" alt="..."></th>
+			<td><a href="{{user.html_url}}">{{user.login}}</a></td>
+			<td>{{user.bio}}</td>
+			<td>{{user.location}}</td>
+			<td><a href="{% url 'adduser' username=user.login %}" class="btn btn-primary fw-bolder">+</a>
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+<nav aria-label="Page navigation example">
+	<ul class="pagination">
+		<li class="page-item">
+			<a class="page-link" href="/search?btnradio=github&q={{search_q}}&page={{page|add:" -1"}}"
+				aria-label="Previous">
+				<span aria-hidden="true">{{q}}&laquo;</span>
+			</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" href="/search?btnradio=github&q={{search_q}}&page={{page|add:" 1"}}" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+			</a>
+		</li>
+	</ul>
+</nav>
+
+{% endblock content %}
